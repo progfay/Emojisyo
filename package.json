@@ -3,7 +3,9 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
   },
   "dependencies": {
     "asearch": "0.0.7",
