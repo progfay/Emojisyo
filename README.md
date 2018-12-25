@@ -1,0 +1,2 @@
+# Emojisyo
+Dictionary of emoji😄
