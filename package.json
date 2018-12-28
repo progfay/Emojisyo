@@ -1,0 +1,22 @@
+{
+  "name": "emojisyo",
+  "version": "1.0.0",
+  "description": "## Development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/progfay/Emojisyo.git"
+  },
+  "keywords": [
+    "emoji"
+  ],
+  "author": "progfay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/progfay/Emojisyo/issues"
+  },
+  "homepage": "https://github.com/progfay/Emojisyo#readme"
+}
