@@ -21,5 +21,8 @@
   "homepage": "https://github.com/progfay/Emojisyo#readme",
   "dependencies": {
     "micro": "^9.3.3"
+  },
+  "devDependencies": {
+    "micro-dev": "^3.0.0"
   }
 }
