@@ -79,14 +79,11 @@
         </script>
     </amp-state>
 
-    <div>
-        <label> 🔍 </label>
-        <input name="emoji" type="text" value="" [value]="query || ''" autocomplete="off" on="
-            input-debounced:
-              AMP.setState({ query: event.value })
-            tap:
-              AMP.setState({ query: query || '' })" />
-    </div>
+    <input name="emoji" type="text" value="" [value]="query || ''" autocomplete="off" on="
+        input-debounced:
+            AMP.setState({ query: event.value })
+        tap:
+            AMP.setState({ query: query || '' })" />
 
     <amp-list id="autosuggest-list" height="120" layout="fixed-height" src="/search_list" [src]="query ? autosuggest.endpoint + query : autosuggest.empty">
         <template type="amp-mustache">
