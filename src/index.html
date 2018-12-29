@@ -99,10 +99,7 @@
             <div class="autosuggest-container hidden" [class]="(showDropdown && query) ?
             'autosuggest-container' :
             'autosuggest-container hidden'">
-                <amp-list class="autosuggest-box" id="autosuggest-list"
-                layout="fixed-height" height="120"
-                src="/search_list"
-                [src]="query ? autosuggest.endpoint + query : autosuggest.emptyAndInitialTemplateJson" >
+                <amp-list class="autosuggest-box" id="autosuggest-list" layout="fixed-height" height="120" src="/search_list" [src]="query ? autosuggest.endpoint + query : autosuggest.emptyAndInitialTemplateJson">
                     <template type="amp-mustache">
               <amp-selector id="autosuggest-selector"
                 keyboard-select-mode="focus"
