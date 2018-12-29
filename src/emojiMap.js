@@ -4,36 +4,36 @@ const emojiMap = {}
 
 for (const name of ordered) {
   if (!emojiMap[name]) {
-    emojiMap[name] = [ name ]
+    emojiMap[name] = new Set([ name ])
   } else {
-    emojiMap[name].push(name)
+    emojiMap[name].add(name)
   }
 
   const { char, keywords, category } = lib[name]
 
   if (!emojiMap[char]) {
-    emojiMap[char] = [ name ]
+    emojiMap[char] = new Set([ name ])
   } else {
-    emojiMap[char].push(name)
+    emojiMap[char].add(name)
   }
 
   for (const keyword of keywords) {
     if (!emojiMap[keyword]) {
-      emojiMap[keyword] = [ name ]
+      emojiMap[keyword] = new Set([ name ])
     } else {
-      emojiMap[keyword].push(name)
+      emojiMap[keyword].add(name)
     }
   }
 
   if (!emojiMap[category]) {
-    emojiMap[category] = [ name ]
+    emojiMap[category] = new Set([ name ])
   } else {
-    emojiMap[category].push(name)
+    emojiMap[category].add(name)
   }
 }
 
-for (const keyword of Object.keys(emojiMap)) {
-  emojiMap[keyword] = Array.from(new Set(emojiMap[keyword]))
+for (const keyword in emojiMap) {
+  emojiMap[keyword] = Array.from(emojiMap[keyword])
 }
 
 module.exports = emojiMap
