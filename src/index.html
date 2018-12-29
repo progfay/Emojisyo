@@ -9,7 +9,7 @@
     <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
     <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
     <link rel="canonical" href="/">
-    <title>Hello, AMPs</title>
+    <title> 📕 Emojisyo </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <style amp-boilerplate>
         body {
@@ -79,51 +79,44 @@
                 }
             </script>
         </amp-state>
+
         <div>
-            <label>🔍</label>
+            <label> 🔍 </label>
             <input name="city" type="text" on="
             input-debounced:
-              AMP.setState({
-                query: event.value,
-                showDropdown: event.value,
-              }),
+              AMP.setState({ query: event.value, showDropdown: event.value }),
               autosuggest-list.show;
             tap:
-              AMP.setState({
-                query: query == null ? '' : query,
-                showDropdown: 'true'
-              }),
-              autosuggest-list.show" [value]="query || ''" value="" required autocomplete="off" />
+              AMP.setState({ query: query == null ? '' : query, showDropdown: 'true' }),
+              autosuggest-list.show" [value]="query || ''" value="" autocomplete="off" />
         </div>
+
         <div class="suggest">
             <div class="autosuggest-container hidden" [class]="(showDropdown && query) ?
             'autosuggest-container' :
             'autosuggest-container hidden'">
-                <amp-list class="autosuggest-box" id="autosuggest-list" layout="fixed-height" height="120" src="/search_list" [src]="query ? autosuggest.endpoint + query : autosuggest.emptyAndInitialTemplateJson">
+                <amp-list class="autosuggest-box" id="autosuggest-list" height="120" layout="fixed-height" src="/search_list" [src]="query ? autosuggest.endpoint + query : autosuggest.emptyAndInitialTemplateJson">
                     <template type="amp-mustache">
-              <amp-selector id="autosuggest-selector"
-                keyboard-select-mode="focus"
-                layout="container"
-                on="
-                  select:
-                    AMP.setState({
-                      query: event.targetOption,
-                      showDropdown: false
-                    }),
-                    autosuggest-list.hide">
-                {{#results}}
-                <div class="select-option no-outline"
-                  role="option"
-                  tabindex="0"
-                  on="tap:autosuggest-list.hide"
-                  option="{{.}}">{{.}}</div>
-                {{/results}} {{^results}}
-                <div class="select-option {{#query}}empty{{/query}}">
-                  {{#query}}Sorry! We don't ship to your city 😰{{/query}}
-                </div>
-                {{/results}}
-              </amp-selector>
-            </template>
+                        <amp-selector id="autosuggest-selector"
+                            keyboard-select-mode="focus" layout="container"
+                            on="
+                            select:
+                                AMP.setState({ query: event.targetOption, showDropdown: false }),
+                                autosuggest-list.hide">
+                            {{#results}}
+                            <div class="select-option no-outline"
+                                role="option" tabindex="0"
+                                on="tap:autosuggest-list.hide"
+                                option="{{.}}">
+                            {{.}}
+                            </div>
+                            {{/results}} {{^results}}
+                            <div class="select-option {{#query}}empty{{/query}}">
+                            {{#query}} 🙇 Sorry, not found... 🙇 {{/query}}
+                            </div>
+                            {{/results}}
+                        </amp-selector>
+                        </template>
                 </amp-list>
             </div>
         </div>
