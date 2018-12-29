@@ -4,7 +4,5 @@ const suggestedList = require('./suggestedList')
 
 module.exports = router(
   get('/search_list', suggestedList),
-  get('/*', (req, res) => handler(req, res, {
-    public: 'src'
-  }))
+  get('/*', (req, res) => handler(req, res, { public: 'src' }))
 )

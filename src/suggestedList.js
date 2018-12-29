@@ -22,19 +22,15 @@ const getSuggestedList = (input) => {
 
   let emojiSet = null
   for (const word of input.split(' ')) {
-    if (!emojiSet) {
-      emojiSet = new Set(getEmojiList(word))
-    } else {
-      emojiSet = new Set(
-        getEmojiList(word).filter(emoji => emojiSet.has(emoji))
-      )
-    }
+    emojiSet = emojiSet
+      ? new Set(getEmojiList(word).filter(emoji => emojiSet.has(emoji)))
+      : new Set(getEmojiList(word))
   }
 
   return Array.from(emojiSet)
 }
 
-module.exports = ({ query: { input = '' } = {} }, res) => (
+module.exports = ({ query: { input } }, res) => (
   send(res, 200, {
     items: [
       {
