@@ -6,7 +6,8 @@ const suggestedList = require('./suggestedList')
 const notfound = (req, res) => send(res, 404, 'Not found route')
 
 module.exports = router(
-  get('/', handler),
   get('/search_list', suggestedList),
-  get('/*', notfound)
+  get('/*', (req, res) => handler(req, res, {
+    unListed: [ 'node_modules', 'package.json', 'package-lock.json' ]
+  }))
 )
