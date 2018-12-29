@@ -67,60 +67,45 @@
 </head>
 
 <body>
-    <div class="wrapper" on="tap:AMP.setState({showDropdown:false})" role="button" tabindex="0" aria-label="Tap to close the autosuggest box">
-        <amp-state id="autosuggest">
-            <script type="application/json">
-                {
-                    "endpoint": "/search_list?input=",
-                    "emptyAndInitialTemplateJson": [{
-                        "query": "",
-                        "results": []
-                    }]
-                }
-            </script>
-        </amp-state>
+    <amp-state id="autosuggest">
+        <script type="application/json">
+            {
+                "endpoint": "/search_list?input=",
+                "empty": [{
+                    "query": "",
+                    "results": []
+                }]
+            }
+        </script>
+    </amp-state>
 
-        <div>
-            <label> 🔍 </label>
-            <input name="city" type="text" on="
+    <div>
+        <label> 🔍 </label>
+        <input name="city" type="text" value="" [value]="query || ''" autocomplete="off" on="
             input-debounced:
               AMP.setState({ query: event.value, showDropdown: event.value }),
               autosuggest-list.show;
             tap:
-              AMP.setState({ query: query == null ? '' : query, showDropdown: 'true' }),
-              autosuggest-list.show" [value]="query || ''" value="" autocomplete="off" />
-        </div>
-
-        <div class="suggest">
-            <div class="autosuggest-container hidden" [class]="(showDropdown && query) ?
-            'autosuggest-container' :
-            'autosuggest-container hidden'">
-                <amp-list class="autosuggest-box" id="autosuggest-list" height="120" layout="fixed-height" src="/search_list" [src]="query ? autosuggest.endpoint + query : autosuggest.emptyAndInitialTemplateJson">
-                    <template type="amp-mustache">
-                        <amp-selector id="autosuggest-selector"
-                            keyboard-select-mode="focus" layout="container"
-                            on="
-                            select:
-                                AMP.setState({ query: event.targetOption, showDropdown: false }),
-                                autosuggest-list.hide">
-                            {{#results}}
-                            <div class="select-option no-outline"
-                                role="option" tabindex="0"
-                                on="tap:autosuggest-list.hide"
-                                option="{{.}}">
-                            {{.}}
-                            </div>
-                            {{/results}} {{^results}}
-                            <div class="select-option {{#query}}empty{{/query}}">
-                            {{#query}} 🙇 Sorry, not found... 🙇 {{/query}}
-                            </div>
-                            {{/results}}
-                        </amp-selector>
-                        </template>
-                </amp-list>
-            </div>
-        </div>
+              AMP.setState({ query: query || '', showDropdown: 'true' }),
+              autosuggest-list.show" />
     </div>
+
+    <amp-list id="autosuggest-list" height="120" layout="fixed-height" src="/search_list" [src]="query ? autosuggest.endpoint + query : autosuggest.empty">
+        <template type="amp-mustache">
+            <amp-selector id="autosuggest-selector" layout="container"
+                on="select: AMP.setState({ query: event.targetOption, showDropdown: false })">
+                {{#results}}
+                <div tabindex="0" role="option" option="{{.}}">
+                {{.}}
+                </div>
+                {{/results}} {{^results}}
+                <div class="select-option {{#query}}empty{{/query}}">
+                {{#query}} 🙇 Sorry, not found... 🙇 {{/query}}
+                </div>
+                {{/results}}
+            </amp-selector>
+        </template>
+    </amp-list>
 
 </body>
 
