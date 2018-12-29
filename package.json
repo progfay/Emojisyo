@@ -1,18 +1,34 @@
 {
-  "name": "create-next-example-app",
+  "name": "emojisyo",
+  "version": "1.0.0",
+  "description": "## Development",
+  "main": "src/main.js",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "lint": "standard",
-    "lint:fix": "standard --fix"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "micro-dev",
+    "start": "micro"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/progfay/Emojisyo.git"
+  },
+  "keywords": [
+    "emoji"
+  ],
+  "author": "progfay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/progfay/Emojisyo/issues"
+  },
+  "homepage": "https://github.com/progfay/Emojisyo#readme",
   "dependencies": {
     "asearch": "0.0.7",
     "emojilib": "^2.4.0",
-    "next": "^7.0.2",
-    "react": "^16.7.0-alpha.2",
-    "react-dom": "^16.7.0-alpha.2"
+    "micro": "^9.3.3",
+    "microrouter": "^3.1.3",
+    "serve": "^10.1.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "micro-dev": "^3.0.0"
+  }
 }
