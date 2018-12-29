@@ -18,11 +18,11 @@ const getEmojiList = (word) => {
   return list
 }
 
-const getSuggestedList = (input) => {
-  if (!input) return []
+const getSuggestedList = (query) => {
+  if (!query) return []
 
   let emojiSet = null
-  for (const word of input.split(' ')) {
+  for (const word of query.split(' ')) {
     emojiSet = emojiSet
       ? new Set(getEmojiList(word).filter(emoji => emojiSet.has(emoji)))
       : new Set(getEmojiList(word))
@@ -31,12 +31,12 @@ const getSuggestedList = (input) => {
   return Array.from(emojiSet)
 }
 
-module.exports = ({ query: { input } }, res) => {
-  const results = getSuggestedList(input).map(
+module.exports = ({ query: { q } }, res) => {
+  const results = getSuggestedList(q).map(
     keyword => ({
       emoji: lib[keyword].char,
       name: keyword
     })
   )
-  return send(res, 200, { items: [ { input, results } ] })
+  return send(res, 200, { items: [ { q, results } ] })
 }
