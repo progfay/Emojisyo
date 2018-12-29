@@ -70,7 +70,7 @@
     <amp-state id="suggest">
         <script type="application/json">
             {
-                "endpoint": "/search_list?q=",
+                "endpoint": "/emoji_list?q=",
                 "empty": [{
                     "query": "",
                     "results": []
@@ -85,7 +85,7 @@
         tap:
             AMP.setState({ query: query || '' })" />
 
-    <amp-list id="suggest-list" height="120" layout="fixed-height" src="/search_list" [src]="query ? suggest.endpoint + query : suggest.empty">
+    <amp-list id="suggest-list" height="120" layout="fixed-height" src="/emoji_list" [src]="query ? suggest.endpoint + query : suggest.empty">
         <template type="amp-mustache">
             <amp-selector id="suggest-selector" layout="container"
                 on="select: AMP.setState({ query: event.targetOption })">

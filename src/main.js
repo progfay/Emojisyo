@@ -3,6 +3,6 @@ const handler = require('serve-handler')
 const suggestedList = require('./suggestedList')
 
 module.exports = router(
-  get('/search_list', suggestedList),
+  get('/emoji_list', suggestedList),
   get('/*', (req, res) => handler(req, res, { public: 'src' }))
 )
