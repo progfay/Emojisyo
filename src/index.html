@@ -83,17 +83,15 @@
         <label> 🔍 </label>
         <input name="city" type="text" value="" [value]="query || ''" autocomplete="off" on="
             input-debounced:
-              AMP.setState({ query: event.value, showDropdown: event.value }),
-              autosuggest-list.show;
+              AMP.setState({ query: event.value })
             tap:
-              AMP.setState({ query: query || '', showDropdown: 'true' }),
-              autosuggest-list.show" />
+              AMP.setState({ query: query || '' })" />
     </div>
 
     <amp-list id="autosuggest-list" height="120" layout="fixed-height" src="/search_list" [src]="query ? autosuggest.endpoint + query : autosuggest.empty">
         <template type="amp-mustache">
             <amp-selector id="autosuggest-selector" layout="container"
-                on="select: AMP.setState({ query: event.targetOption, showDropdown: false })">
+                on="select: AMP.setState({ query: event.targetOption })">
                 {{#results}}
                     <div tabindex="0" role="option" option="{{name}}">
                         {{emoji}}: {{name}}
