@@ -1,5 +1,6 @@
 const { send } = require('micro')
 const Asearch = require('asearch')
+const { lib } = require('emojilib')
 const emojiMap = require('./emojiMap')
 
 const getEmojiList = (word) => {
@@ -30,13 +31,12 @@ const getSuggestedList = (input) => {
   return Array.from(emojiSet)
 }
 
-module.exports = ({ query: { input } }, res) => (
-  send(res, 200, {
-    items: [
-      {
-        input: input,
-        results: getSuggestedList(input)
-      }
-    ]
-  })
-)
+module.exports = ({ query: { input } }, res) => {
+  const results = getSuggestedList(input).map(
+    keyword => ({
+      emoji: lib[keyword].char,
+      name: keyword
+    })
+  )
+  return send(res, 200, { items: [ { input, results } ] })
+}

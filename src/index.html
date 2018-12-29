@@ -95,8 +95,8 @@
             <amp-selector id="autosuggest-selector" layout="container"
                 on="select: AMP.setState({ query: event.targetOption, showDropdown: false })">
                 {{#results}}
-                <div tabindex="0" role="option" option="{{.}}">
-                {{.}}
+                <div tabindex="0" role="option" option="{{name}}">
+                    {{emoji}}: {{name}}
                 </div>
                 {{/results}} {{^results}}
                 <div class="select-option {{#query}}empty{{/query}}">
