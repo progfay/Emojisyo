@@ -67,7 +67,7 @@
 </head>
 
 <body>
-    <amp-state id="autosuggest">
+    <amp-state id="suggest">
         <script type="application/json">
             {
                 "endpoint": "/search_list?input=",
@@ -85,9 +85,9 @@
         tap:
             AMP.setState({ query: query || '' })" />
 
-    <amp-list id="autosuggest-list" height="120" layout="fixed-height" src="/search_list" [src]="query ? autosuggest.endpoint + query : autosuggest.empty">
+    <amp-list id="suggest-list" height="120" layout="fixed-height" src="/search_list" [src]="query ? suggest.endpoint + query : suggest.empty">
         <template type="amp-mustache">
-            <amp-selector id="autosuggest-selector" layout="container"
+            <amp-selector id="suggest-selector" layout="container"
                 on="select: AMP.setState({ query: event.targetOption })">
                 {{#results}}
                     <div tabindex="0" role="option" option="{{name}}">
