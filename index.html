@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
     <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
     <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
     <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
@@ -83,7 +82,7 @@
         <amp-state id="autosuggest">
             <script type="application/json">
                 {
-                    "endpoint": "/search_list?q=",
+                    "endpoint": "/search_list?input=",
                     "emptyAndInitialTemplateJson": [{
                         "query": "",
                         "results": []
@@ -91,10 +90,9 @@
                 }
             </script>
         </amp-state>
-        <form method="post" action-xhr="https://ampbyexample.com/advanced/autosuggest/address" target="_blank" id="search-form">
-            <div>
-                <label>City</label>
-                <input name="city" type="text" on="
+        <div>
+            <label>🔍</label>
+            <input name="city" type="text" on="
             input-debounced:
               AMP.setState({
                 query: event.value,
@@ -107,15 +105,15 @@
                 showDropdown: 'true'
               }),
               autosuggest-list.show" [value]="query || ''" value="" required autocomplete="off" />
-            </div>
-            <div class="suggest">
-                <div class="autosuggest-container hidden" [class]="(showDropdown && query) ?
+        </div>
+        <div class="suggest">
+            <div class="autosuggest-container hidden" [class]="(showDropdown && query) ?
             'autosuggest-container' :
             'autosuggest-container hidden'">
-                    <amp-list class="autosuggest-box" layout="fixed-height" height="120" src="/search_list" [src]="query ?
+                <amp-list class="autosuggest-box" layout="fixed-height" height="120" src="/search_list" [src]="query ?
               autosuggest.endpoint + query :
               autosuggest.emptyAndInitialTemplateJson" id="autosuggest-list">
-                        <template type="amp-mustache">
+                    <template type="amp-mustache">
               <amp-selector id="autosuggest-selector"
                 keyboard-select-mode="focus"
                 layout="container"
@@ -139,10 +137,9 @@
                 {{/results}}
               </amp-selector>
             </template>
-                    </amp-list>
-                </div>
+                </amp-list>
             </div>
-        </form>
+        </div>
     </div>
 
 </body>
