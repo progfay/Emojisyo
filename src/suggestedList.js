@@ -2,20 +2,36 @@ const { send } = require('micro')
 const Asearch = require('asearch')
 const emojiMap = require('./emojiMap')
 
-const suggested = (input) => {
-  if (!input) return []
+const getEmojiList = (word) => {
+  const asearch = new Asearch(` ${word} `)
+  let list = []
 
-  let emojiList = []
-  const asearch = new Asearch(` ${input} `)
   for (const ambiguity of [0, 1, 2]) {
     for (const keyword of Object.keys(emojiMap)) {
       if (!asearch.match(keyword, ambiguity)) continue
-      emojiList = emojiList.concat(emojiMap[keyword])
+      list = list.concat(emojiMap[keyword])
     }
-    if (emojiList.length > 0) break
+    if (list.length > 0) break
   }
 
-  return Array.from(new Set(emojiList))
+  return list
+}
+
+const getSuggestedList = (input) => {
+  if (!input) return []
+
+  let emojiSet = null
+  for (const word of input.split(' ')) {
+    if (!emojiSet) {
+      emojiSet = new Set(getEmojiList(word))
+    } else {
+      emojiSet = new Set(
+        getEmojiList(word).filter(emoji => emojiSet.has(emoji))
+      )
+    }
+  }
+
+  return Array.from(emojiSet)
 }
 
 module.exports = ({ query: { input = '' } = {} }, res) => (
@@ -23,7 +39,7 @@ module.exports = ({ query: { input = '' } = {} }, res) => (
     items: [
       {
         input: input,
-        results: suggested(input)
+        results: getSuggestedList(input)
       }
     ]
   })
