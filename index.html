@@ -8,20 +8,9 @@
     <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
     <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
     <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+    <link rel="canonical" href="/">
     <title>Hello, AMPs</title>
-    <link rel="canonical" href="http://example.ampproject.org/article-metadata.html">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "NewsArticle",
-            "headline": "Open-source framework for publishing content",
-            "datePublished": "2015-10-07T12:02:41Z",
-            "image": [
-                "logo.jpg"
-            ]
-        }
-    </script>
     <style amp-boilerplate>
         body {
             -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
@@ -110,9 +99,10 @@
             <div class="autosuggest-container hidden" [class]="(showDropdown && query) ?
             'autosuggest-container' :
             'autosuggest-container hidden'">
-                <amp-list class="autosuggest-box" layout="fixed-height" height="120" src="/search_list" [src]="query ?
-              autosuggest.endpoint + query :
-              autosuggest.emptyAndInitialTemplateJson" id="autosuggest-list">
+                <amp-list class="autosuggest-box" id="autosuggest-list"
+                layout="fixed-height" height="120"
+                src="/search_list"
+                [src]="query ? autosuggest.endpoint + query : autosuggest.emptyAndInitialTemplateJson" >
                     <template type="amp-mustache">
               <amp-selector id="autosuggest-selector"
                 keyboard-select-mode="focus"
