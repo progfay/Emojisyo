@@ -1,10 +1,11 @@
 const { send } = require('micro')
+const emojiMap = require('./emojiMap')
 
 const suggested = (input) => {
   if (!input) {
     return []
   }
-  return ['hoge']
+  return emojiMap[input] || []
 }
 
 module.exports = ({ query: { input = '' } = {} }, res) => (
