@@ -184,7 +184,7 @@
             📕 Emojisyo
         </header>
 
-        <input id="search-form" name="emoji" type="text" value="" [value]="query || ''" autofocus autocomplete="off" on="
+        <input id="search-form" name="emoji" type="text" value="" [value]="query || ''" placeholder="Search" autocomplete="off" on="
             input-debounced:
                 AMP.setState({ query: event.value })
             tap:
