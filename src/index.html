@@ -64,6 +64,45 @@
             }
         }
     </style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+        div#container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        header#title {
+            font-size: 5vw;
+            margin: 40px 0 0 0;
+        }
+        
+        input#search-form {
+            width: 60vw;
+            max-width: 640px;
+            margin: 40px 0 40px 0;
+        }
+        
+        amp-list#suggest-list {
+            width: 80vw;
+            max-width: 960px;
+        }
+        
+        amp-list div[role="list-item"] {
+            width: 80vw;
+            max-width: 960px;
+            border: solid 1px black;
+            box-sizing: border-box;
+        }
+        
+        amp-list div[role="list-item"]:not(:first-child) {
+            border-top: none;
+        }
+        
+        amp-list div[role="list-item"]:not(:last-child) {
+            border-bottom: solid 1px gray;
+        }
+    </style>
 </head>
 
 <body>
@@ -79,24 +118,28 @@
         </script>
     </amp-state>
 
-    <input name="emoji" type="text" value="" [value]="query || ''" autocomplete="off" on="
-        input-debounced:
-            AMP.setState({ query: event.value })
-        tap:
-            AMP.setState({ query: query || '' })" />
+    <div id="container">
+        <header id="title"> 📕 Emojisyo </header>
 
-    <amp-list id="suggest-list" height="120" layout="fixed-height" src="/emoji_list" [src]="query ? suggest.endpoint + query : suggest.empty">
-        <template type="amp-mustache">
-            <amp-selector id="suggest-selector" layout="container"
-                on="select: AMP.setState({ query: event.targetOption })">
-                {{#results}}
-                    <div tabindex="0" role="option" option="{{name}}">
-                        {{emoji}}: {{name}}
-                    </div>
-                {{/results}}
-            </amp-selector>
-        </template>
-    </amp-list>
+        <input id="search-form" name="emoji" type="text" value="" [value]="query || ''" autofocus autocomplete="off" on="
+            input-debounced:
+                AMP.setState({ query: event.value })
+            tap:
+                AMP.setState({ query: query || '' })" />
+
+        <amp-list id="suggest-list" layout="fixed-height" height="80" src="/emoji_list" [src]="query ? suggest.endpoint + query : suggest.empty">
+            <template type="amp-mustache">
+                <amp-selector id="suggest-selector" layout="container"
+                    on="select: AMP.setState({ query: event.targetOption })">
+                    {{#results}}
+                        <div tabindex="0" role="list-item" option="{{name}}">
+                            {{emoji}}: {{name}}
+                        </div>
+                    {{/results}}
+                </amp-selector>
+            </template>
+        </amp-list>
+    </div>
 
 </body>
 
