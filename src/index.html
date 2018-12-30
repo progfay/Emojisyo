@@ -75,6 +75,8 @@
         header#title {
             font-size: 5vw;
             margin: 40px 0 0 0;
+            user-select: none;
+            -moz-user-select: none;
         }
         
         input#search-form {
@@ -131,7 +133,9 @@
     </amp-state>
 
     <div id="container">
-        <header id="title"> 📕 Emojisyo </header>
+        <header id="title" on="tap: AMP.setState({ query: '' })">
+            📕 Emojisyo
+        </header>
 
         <input id="search-form" name="emoji" type="text" value="" [value]="query || ''" autofocus autocomplete="off" on="
             input-debounced:
