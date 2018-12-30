@@ -96,8 +96,6 @@
         amp-list div[role="list-item"] {
             width: 60vw;
             max-width: 600px;
-            border: solid 1px black;
-            box-sizing: border-box;
             display: flex;
             align-items: center;
             transition: background-color 180ms;
@@ -108,18 +106,9 @@
             background-color: #F8F8F8;
         }
         
-        amp-list div[role="list-item"]:not(:first-child) {
-            border-top: none;
-        }
-        
-        amp-list div[role="list-item"]:not(:last-child) {
-            border-bottom: solid 1px gray;
-        }
-        
         amp-list div[role="emoji"] {
             font-size: 8vw;
             padding: 1vw 5vw;
-            border-right: solid 1px gray;
         }
         
         amp-list div[role="name"] {
