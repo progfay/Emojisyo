@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
     <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
     <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
     <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
@@ -151,15 +150,12 @@
 
         <amp-list id="suggest-list" layout="fixed-height" height="80" src="/emoji_list" [src]="query ? suggest.endpoint + query : suggest.empty">
             <template type="amp-mustache">
-                <amp-selector id="suggest-selector" layout="container"
-                    on="select: AMP.setState({ query: event.targetOption })">
-                    {{#results}}
-                        <div tabindex="0" role="list-item" option="{{name}}">
-                            <div role="emoji"> {{emoji}} </div>
-                            <div role="name"> {{name}} </div>
-                        </div>
-                    {{/results}}
-                </amp-selector>
+                {{#results}}
+                    <div tabindex="0" role="list-item" option="{{name}}">
+                        <div role="emoji"> {{emoji}} </div>
+                        <div role="name"> {{name}} </div>
+                    </div>
+                {{/results}}
             </template>
         </amp-list>
     </div>
