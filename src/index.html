@@ -142,7 +142,7 @@
     </amp-state>
 
     <div id="container">
-        <header id="title" on="tap: AMP.setState({ query: '' })">
+        <header id="title" role="banner" tabindex="-1" on="tap: AMP.setState({ query: '' })">
             📕 Emojisyo
         </header>
 
@@ -155,7 +155,7 @@
         <amp-list id="suggest-list" layout="fixed-height" height="80" src="/emoji_list" [src]="query ? suggest.endpoint + query : suggest.empty">
             <template type="amp-mustache">
                 {{#results}}
-                    <div tabindex="0" role="list-item" option="{{name}}">
+                    <div tabindex="0" role="list-item">
                         <div role="emoji"> {{emoji}} </div>
                         <div role="name"> {{name}} </div>
                     </div>
