@@ -90,12 +90,19 @@
         amp-list div[role="list-item"] {
             display: flex;
             align-items: center;
+            background: transparent;
             transition: background-color 180ms;
         }
         
         amp-list div[role="list-item"]:hover,
         amp-list div[role="list-item"]:focus {
             background-color: #F8F8F8;
+        }
+        
+        amp-list input[role="emoji"],
+        amp-list input[role="name"] {
+            border: none;
+            background-color: transparent;
         }
         
         @media (max-width: 1000px) {
@@ -112,11 +119,14 @@
             amp-list div[role="list-item"] {
                 width: 60vw;
             }
-            amp-list div[role="emoji"] {
+            amp-list input[role="emoji"] {
+                width: 5vw;
                 font-size: 5vw;
                 padding: 1vw 5vw;
             }
-            amp-list div[role="name"] {
+            amp-list input[role="name"] {
+                width: 45vw;
+                height: 7vw;
                 font-size: 2vw;
                 padding-left: 2.5vw;
             }
@@ -136,11 +146,14 @@
             amp-list div[role="list-item"] {
                 width: 600px;
             }
-            amp-list div[role="emoji"] {
+            amp-list input[role="emoji"] {
+                width: 50px;
                 font-size: 50px;
                 padding: 10px 50px;
             }
-            amp-list div[role="name"] {
+            amp-list input[role="name"] {
+                width: 450px;
+                height: 70px;
                 font-size: 20px;
                 padding-left: 25px;
             }
@@ -176,8 +189,8 @@
             <template type="amp-mustache">
                 {{#results}}
                     <div tabindex="0" role="list-item">
-                        <div role="emoji"> {{emoji}} </div>
-                        <div role="name"> {{name}} </div>
+                        <input readonly role="emoji" value="{{emoji}}" />
+                        <input readonly role="name" value="{{name}}" />
                     </div>
                 {{/results}}
             </template>
