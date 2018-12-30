@@ -94,13 +94,12 @@
         amp-list div[role="list-item"] {
             display: flex;
             align-items: center;
-            background: transparent;
             margin: 1vh;
             transition: background-color 180ms;
         }
         
-        amp-list div[role="list-item"]:hover,
-        amp-list div[role="list-item"]:focus {
+        amp-list input[role="emoji"]:hover,
+        amp-list input[role="name"]:hover {
             background-color: #F8F8F8;
         }
         
@@ -108,6 +107,7 @@
         amp-list input[role="name"] {
             border: none;
             background-color: transparent;
+            transition: background-color 180ms;
         }
         
         @media (max-width: 1000px) {
