@@ -3,7 +3,7 @@
     "short_name": "Emojisyo",
     "theme_color": "#000000",
     "background_color": "#FFFFFF",
-    "display": "browser",
+    "display": "fullscreen",
     "orientation": "portrait",
     "Scope": "/",
     "start_url": "https://emojisyo.now.sh/",
