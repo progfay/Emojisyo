@@ -127,7 +127,34 @@
             transition: background-color 180ms;
         }
         
-        @media (max-width: 1000px) {
+        @media (max-width: 500px) {
+            header#title {
+                font-size: 10vw;
+            }
+            amp-list#suggest-list {
+                width: 100vw;
+            }
+            input#search-form {
+                width: 80vw;
+                padding: 1vh 5vw;
+            }
+            amp-list div[role="list-item"] {
+                width: 90vw;
+            }
+            amp-list input[role="emoji"] {
+                width: 10vw;
+                font-size: 8vw;
+                padding: 1vw 5vw;
+            }
+            amp-list input[role="name"] {
+                width: 70vw;
+                height: 7vw;
+                font-size: 5vw;
+                padding-left: 2.5vw;
+            }
+        }
+        
+        @media (min-width: 500px) and (max-width: 1000px) {
             header#title {
                 font-size: 5vw;
             }
