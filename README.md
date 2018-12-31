@@ -17,3 +17,6 @@ $ npm run dev
 $ npm start
 ```
 
+## LICENCE
+
+MIT
