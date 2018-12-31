@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>installing Service Woker</title>
+    <script type="text/javascript">
+        if("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("/sw.js")
+            .then((({ scope }) => { console.log('SW scope: ', reg.scope) })
+            .catch(err => { console.log('SW registration failed: ', err) })
+        }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
