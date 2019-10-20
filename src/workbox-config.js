@@ -1,9 +1,9 @@
 module.exports = {
-  "globDirectory": "./",
+  "globDirectory": "./static",
   "globPatterns": [
     "**/*.{js,ico,png,html,json}"
   ],
-  "swDest": "sw.js",
+  "swDest": "./static/sw.js",
   "runtimeCaching": [{
     urlPattern: new RegExp('^https://cdn.ampproject.org'),
     handler: 'staleWhileRevalidate',

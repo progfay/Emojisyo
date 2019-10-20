@@ -4,5 +4,5 @@ const suggestedList = require('./suggestedList')
 
 module.exports = router(
   get('/emoji_list', suggestedList),
-  get('/*', (req, res) => handler(req, res, { public: 'src' }))
+  get('/*', (req, res) => handler(req, res, { public: 'src/static' }))
 )
