@@ -11,7 +11,13 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
@@ -19,10 +25,6 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox
  * See https://goo.gl/S9QRab
  */
 self.__precacheManifest = [
-  {
-    "url": "emojiMap.js",
-    "revision": "5cdec512cc53efa417d7003db93dd033"
-  },
   {
     "url": "images/favicon.ico",
     "revision": "9ed302ec446b361c854dab3da30d756d"
@@ -61,26 +63,17 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "0c0ab83f89a1d08de2f7eebd69cd5db9"
-  },
-  {
-    "url": "main.js",
-    "revision": "0ad3d74ad692e65fff7bfb911fac6f70"
+    "revision": "8564dde0b017270209f5acbf8b5e4ebc"
   },
   {
     "url": "manifest.json",
-    "revision": "ca78f151d37daae184008427eeb3e622"
+    "revision": "b0546b7a9a84eabcedb7ad78459bdedd"
   },
   {
-    "url": "suggestedList.js",
-    "revision": "14699e276289c9cf1599a903ef0b1b3f"
-  },
-  {
-    "url": "workbox-config.js",
-    "revision": "50e477a02594a6c10b29a9bcaa95c15c"
+    "url": "sw.html",
+    "revision": "8dfd9f9e1c6a310184cbb3f971494776"
   }
 ].concat(self.__precacheManifest || []);
-workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerRoute(/^https:\/\/cdn.ampproject.org/, workbox.strategies.staleWhileRevalidate({ plugins: [new workbox.cacheableResponse.Plugin({"statuses":[0,200]})] }), 'GET');
+workbox.routing.registerRoute(/^https:\/\/cdn.ampproject.org/, new workbox.strategies.StaleWhileRevalidate({ plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');

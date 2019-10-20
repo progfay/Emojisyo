@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "micro-dev",
     "start": "micro",
-    "deploy": "now --prod"
+    "deploy": "now --prod",
+    "sw": "workbox generateSW"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "serve": "^10.1.2"
   },
   "devDependencies": {
-    "micro-dev": "^3.0.0"
+    "micro-dev": "^3.0.0",
+    "workbox": "0.0.0"
   }
 }
